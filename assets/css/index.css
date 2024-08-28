@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+}
+body{
+    background-color: #ffffff;
+    position: relative;
+    font-size: 17px;
+    color: #242424;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+    margin: 0px;
+}
+.head-font{
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100,
+        "GRAD" 0;
+}
+a.nonlinkable,.nonlinkable,.nonlinkable a{
+    text-decoration: none;
+}
+.nonlinkable:hover,a.nonlinkable:hover,.nonlinkable a:hover{
+    text-decoration: none;
+}

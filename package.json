@@ -1,0 +1,20 @@
+{
+  "name": "turnibet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.js",
+    "dev": "ts-node dev-server.js"
+  },
+  "dependencies": {
+    "xolus": "^1.0.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "xolus-cmp": "^0.1.1",
+    "@types/express": "^4.17.21"
+  },
+  "license": "MIT",
+  "private": true
+}

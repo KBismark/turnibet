@@ -1,0 +1,84 @@
+.slideright-blur{
+    transform: translateX(10%);
+  }
+  .slideright{
+      transform: translateX(-10%);
+      animation: slideright 1s ease-in-out forwards;
+  }
+  @keyframes slideright {
+      100% {transform: translateX(0%);}
+  }
+  .slideleft-blur{
+      
+      transform: translateX(-10%);
+  }
+  .slideleft{
+      transform: translateX(10%);
+      animation: slideleft 1s ease-in-out forwards;
+  }
+  @keyframes slideleft {
+      100% {transform: translateX(0%);}
+  }
+  .slideup-blur{
+      transform: translateY(10%);
+      opacity: 1;
+  }
+  .slideup{
+      transform: translateY(10%);
+      animation: slideup 1s ease-in-out .1s forwards;
+  }
+  @keyframes slideup {
+      100% {transform: translateY(0%);}
+  }
+  .slidedown{
+      transform: translateY(-10%);
+      animation: slidedown 1s ease-in-out forwards;
+  }
+  @keyframes slidedown {
+      100% {transform: translateY(0%);}
+  }
+  .fade-in{
+    -o-transition-property: opacity;
+      -webkit-transition-property: opacity;
+      -moz-transition-property: opacity;
+      transition-duration: 1s;
+      -o-transition-duration: 1s;
+      -webkit-transition-duration: 1s;
+      -moz-transition-duration: 1s;
+      transition-timing-function: ease-in-out;
+      -o-transition-timing-function: ease-in-out;;
+      -webkit-transition-timing-function: ease-in-out;;
+      -moz-transition-timing-function: ease-in-out;;
+      transition-property: opacity;
+      opacity: 1;
+  }
+  .fade-out-partial{
+    -o-transition-property: opacity;
+      -webkit-transition-property: opacity;
+      -moz-transition-property: opacity;
+      transition-duration: 1s;
+      -o-transition-duration: 1s;
+      -webkit-transition-duration: 1s;
+      -moz-transition-duration: 1s;
+      transition-timing-function: ease-in-out;
+      -o-transition-timing-function: ease-in-out;;
+      -webkit-transition-timing-function: ease-in-out;;
+      -moz-transition-timing-function: ease-in-out;;
+      transition-property: opacity;
+      opacity: 0.6;
+  }
+  .fade-out{
+    -o-transition-property: opacity;
+      -webkit-transition-property: opacity;
+      -moz-transition-property: opacity;
+      transition-duration: 1s;
+      -o-transition-duration: 1s;
+      -webkit-transition-duration: 1s;
+      -moz-transition-duration: 1s;
+      transition-timing-function: ease-in-out;
+      -o-transition-timing-function: ease-in-out;;
+      -webkit-transition-timing-function: ease-in-out;;
+      -moz-transition-timing-function: ease-in-out;;
+      transition-property: opacity;
+      opacity: 0;
+  }
