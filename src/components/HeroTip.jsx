@@ -29,10 +29,18 @@ const HeroTips = createComponent({
             <template>
                 <div id="hero-tips">
                     <div style="display:flex;justify-content:center;">
-                        <div className="buttons">
+                        <div className="buttons over-mobile-screen d-flex">
                             <button className="white-inactive" onClick="onClickMe" >Satuday</button>
                             <button className="white-inactive" onClick="onClickMe" >Sunday</button>
                             <button className="white-inactive" onClick="onClickMe" >Monday</button>
+                            <button className="white-inactive" onClick="onClickMe" >Yesterday</button>
+                            <button onClick="onClickMe" className="white-bg" >Today</button>
+                            
+                        </div>
+                        <div className="buttons under-mobile-screen d-flex">
+                            <button className="white-inactive" onClick="onClickMe" >Sat</button>
+                            <button className="white-inactive" onClick="onClickMe" >Sun</button>
+                            <button className="white-inactive" onClick="onClickMe" >Mon</button>
                             <button className="white-inactive" onClick="onClickMe" >Yesterday</button>
                             <button onClick="onClickMe" className="white-bg" >Today</button>
                             
@@ -47,7 +55,7 @@ const HeroTips = createComponent({
                                 <div style="width: 20%;padding: 10px 15px;">
                                     <div className="tip-head">Tips</div>
                                 </div>
-                                <div style="width: 20%;padding: 10px 15px;">
+                                <div style="width: 20%;padding: 10px 15px; margin-right: 5px;">
                                     <div className="tip-head">Results</div>
                                 </div>
                             </div>
@@ -73,14 +81,15 @@ const css = `
     padding: 20px 0px 0px 0px;
     margin: 1% 4% 0;
     max-width: 700px;
-    background: #000000;
+    background: rgba(0,0,0,0.8);
     border-radius: 0px 0px 20px 20px;
+    position: relative;
+    z-index:2;
 }
 #hero-tips .buttons{
     padding: 3px;
-    display: flex;
     align-items: center;
-    background: #000000;
+    overflow-x:auto;
 }
 #hero-tips .buttons button{
     margin: 10px;
@@ -89,6 +98,18 @@ const css = `
     border-radius: 0px 0px 20px 20px;
     padding: 10px 20px 20px 20px;
     background: #ffffff;
+}
+
+@media screen and (max-width: 450px){
+    #hero-tips{
+        margin: 1% 0 0 0;
+        width: 100%;
+    }
+    #hero-tips .buttons button{
+        padding: 6px 10px;
+        margin: 10px 5px;
+        font-size: 14px;
+    }
 }
 `
 .replace(/\n/gs,'').replace(/\s\s/gs,' ').replace(/\s\s/gs,' ')

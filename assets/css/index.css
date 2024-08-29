@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 html{
-    font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
 }
 body{
@@ -10,12 +9,14 @@ body{
     position: relative;
     font-size: 17px;
     color: #242424;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 1.42857143;
+    line-height: 1.42;
     margin: 0px;
+    font-family: "Poppins", "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 .head-font{
-    font-family: "Roboto Serif", serif;
+    /* font-family: "Roboto Serif", serif; */
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
@@ -23,6 +24,11 @@ body{
         "wdth" 100,
         "GRAD" 0;
 }
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 a.nonlinkable,.nonlinkable,.nonlinkable a{
     text-decoration: none;
 }

@@ -68,7 +68,7 @@ nav.horizontal ul li a,nav.vertical ul li a{
     height: auto;
     max-height: 560px;
     background-color: #000000;
-    background-image: url(../images/hero/hero.jpg);
+    background-image: url(../images/hero/hero1.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -242,11 +242,25 @@ footer{
     justify-content: space-between;
 }
 
-.under-tablet-screen{
+.under-tablet-screen,
+.under-tablet-screen.d-flex,
+.under-mobile-screen,
+.under-mobile-screen.d-flex{
     display: none;
 }
+
+.over-mobile-screen,
 .over-tablet-screen{
     display: block;
+}
+.d-flex{
+    display: flex;
+}
+.flex-cn{
+    justify-content: center;
+}
+.flex-bt{
+    justify-content: center;
 }
 
 @media screen and (max-width: 770px) {
@@ -272,12 +286,18 @@ footer{
     .under-tablet-screen{
         display: block;
     }
-    .over-tablet-screen{
+    .under-tablet-screen.d-flex{
+        display: flex;
+    }
+    .over-tablet-screen,.over-tablet-screen.d-flex{
         display: none;
     }
 }
 
 @media screen and (max-width: 450px){
+    body{
+        font-size: 15px;
+    }
     #showcase article{
         width: 98%;
         margin-left: 1%;
@@ -317,4 +337,14 @@ footer{
     #hero .hero-content{
         height: 420px;
     }
+    .under-mobile-screen{
+        display: block;
+    }
+    .under-mobile-screen.d-flex{
+        display: flex;
+    }
+    .over-mobile-screen,.over-mobile-screen.d-flex{
+        display: none;
+    }
+
 }

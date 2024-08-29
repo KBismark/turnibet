@@ -41,7 +41,7 @@ export default TipSlice;
 
 export const TipStyles = `
 .tip-container{
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 .tip-container.won{
     border-left: 3px solid #09bb5d;
