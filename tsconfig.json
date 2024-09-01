@@ -14,6 +14,6 @@
         "target": "es5",
         "strict": false
     },
-    "include": ["src"]
-  }
+    "include": ["src", "types.d.ts"]
+}
   

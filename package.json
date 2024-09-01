@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "express": "^4.19.2",
+    "guther": "^1.0.1",
     "statestorejs": "^1.2.0",
     "xolus": "^1.1.0"
   },

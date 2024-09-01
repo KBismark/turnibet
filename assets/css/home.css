@@ -225,6 +225,8 @@ ul.link-list{
     justify-content: center;
     list-style: none;
     flex-flow: wrap;
+    padding: 0;
+    margin: 10px;
 }
 ul.link-list li{
     margin: 0px 25px;
@@ -253,14 +255,28 @@ footer{
 .over-tablet-screen{
     display: block;
 }
+.d-block{
+    display: block;
+}
 .d-flex{
     display: flex;
 }
 .flex-cn{
+    display: flex;
     justify-content: center;
 }
 .flex-bt{
+    display: flex;
+    justify-content: space-between;
+}
+.space-cn,.j-center,.j-cn{
     justify-content: center;
+}
+.space-ar,.j-around,.j-ar{
+    justify-content: center;
+}
+.space-bt,.j-bt,.j-between{
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 770px) {

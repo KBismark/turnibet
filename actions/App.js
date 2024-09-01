@@ -1,5 +1,5 @@
 
-ACTIONS: registerActions("App.js");
+ACTIONS: registerActions("a224");
 export const onClick = (props)=>{
     console.log(props);
     

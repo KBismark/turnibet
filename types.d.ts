@@ -26,7 +26,8 @@ declare function getAction(name: ActionsNames|(string&{}), parentRef: string, co
 declare function setAction(name: string, action: (props: ActionsProps)=>any):void;
 declare function registerActions(actionPath: string):void;
 declare function useRef(storage: string):string;
-const track_it: (...args: never[])=>never;
-const getRef: (...args: never[])=>never;
+declare function getComponentNode(ref: string): ReturnType<typeof document['getElementById']>;
+const __$track_it: (...args: never[])=>never;
+const __$get_ref: (...args: never[])=>never;
 
-NAMES: type ActionsNames = 'onClickMe';
+NAMES: type ActionsNames = 'onToday'|'onYesterday'|'onThird'|'onSecond'|'onFirst'|'onClick'|'onJoinVIP'|'onClickMe'; 

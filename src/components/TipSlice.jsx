@@ -83,6 +83,7 @@ export const TipStyles = `
 .tip .status{
     text-transform: capitalize;
     font-weight: 600;
+    margin-right: 5px;
 }
 .tip-info{
     display:flex;

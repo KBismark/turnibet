@@ -1,4 +1,9 @@
 
 
-ACTIONS: /* The action path is registered here. Import registerActions above this line. */;
+ACTIONS: registerActions("x61c5");
 
+setAction('onJoinVIP', ({parentRef, componentRef, storage})=>{
+    alert('Joined Vip');
+    console.log(getComponentNode(componentRef));
+    
+})
