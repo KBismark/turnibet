@@ -1,37 +1,31 @@
 import { createComponent } from "xolus";
 import TipSlice from "./TipSlice";
+import {get} from 'guther'
 
+const serverData = new Map();
+const arr = []
+const defaultData = {
+    'three-way': {
+        previous: arr, today: arr,
+        title: 'Three Way Tips',
+        id: 'three-way',
+    },
+    dangerous: {
+        previous: arr, today: arr,
+        title: 'Today or Never',
+        id: 'dangerous',
+    },
+    oracle: {
+        previous: arr, today: arr,
+        title: 'Three Way Tips',
+        id: 'oracle',
+    },
+}
 const Tips = createComponent({
     template({ storage, parentRef, props}){
-        const datas = [
-            {
-                teams: {
-                    home: 'Man City',
-                    away: 'Chelsea'
-                },
-                tip: 'Home win',
-                status: 'pending',
-                league: 'Premier League',
-                startTime: '19 : 30 PM (GMT+0000)'
-            },
-            {
-                teams: {
-                    home: 'Real Madrid',
-                    away: 'Real Betis'
-                },
-                tip: 'Over 2.5',
-                status: 'live',
-                league: 'Laliga',
-                startTime: '19 : 30 PM (GMT+0000)'
-            }
-        ];
-
-        const data = {
-            title: 'Three Way Tips',
-            id: 'three-way',
-            today: datas,
-            previous: datas
-        }
+        const componentRef = useRef(storage);
+        const data = serverData.get(`${storage}${componentRef}`);
+        serverData.delete(`${storage}${componentRef}`)
 
         return (
             <template>
@@ -85,8 +79,21 @@ const Tips = createComponent({
         )
     },
     async templateData({ storage, parentRef, props, done}){
-        const data = {previous: [], today: []}
-        return <template-data done={true}></template-data>
+        const ref = useRef(storage);
+        get({id: props})
+        .then((data)=>{
+            serverData.set(`${storage}${ref}`, data);
+            done(ref)
+        })
+        .catch((err)=>{
+            serverData.set(`${storage}${ref}`, defaultData[props]||data);
+            done(ref)
+        });
+        const data = {
+            ...defaultData.dangerous,
+            title: 'Not Available'
+        }
+        return <template-data done={false}></template-data>
     }
 })
 

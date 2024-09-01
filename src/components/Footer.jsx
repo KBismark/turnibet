@@ -14,7 +14,7 @@ const Footer = createComponent({
                     </section>
                     <section>
                         <div className="get-social">
-                            <h2 className="page-color" >Get In Touch. Follow Or Send A Message</h2>
+                            <h2 className="page-color" >Get In Touch</h2>
                             <div className="d-flex j-cn">
                                 <ul class="link-list d-flex" style='display:block;'>
                                     

@@ -1,15 +1,19 @@
 import { createComponent } from "xolus";
-import TipSlice from "./TipSlice";
 import Tips from "./ContentTip";
+import {get} from 'guther'
 
-const TIP_IDS = ['free-today', 'free-previous']
+const serverData = new Map();
 
 const ContentTips = createComponent({
     template({ storage, parentRef, props}){
+        const componentRef = useRef(storage);
+        const data = serverData.get(`${storage}${componentRef}`);
+        serverData.delete(`${storage}${componentRef}`)
+        const tipdaysData = data.today&&data.previous?[data.previous, data.today]:Object.values(data)
         return (
             <template>
                 <div id="after-hero-content">
-                    <Map data={TIP_IDS}>{Tips}</Map>
+                    <Map data={tipdaysData}>{Tips}</Map>
                     <style><>{css}</></style>
                 </div>
             </template>
@@ -17,7 +21,18 @@ const ContentTips = createComponent({
         )
     },
     async templateData({ storage, parentRef, props, done}){
-        return <template-data done={true}></template-data>
+        const ref = useRef(storage);
+        get({id: 'free-tips'})
+        .then((data)=>{
+            serverData.set(`${storage}${ref}`, data);
+            done(ref)
+        })
+        .catch((err)=>{
+            serverData.set(`${storage}${ref}`, {});
+            done(ref)
+        });
+        const tipdaysData = [];
+        return <template-data done={false}></template-data>
     }
 })
 

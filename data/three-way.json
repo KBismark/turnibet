@@ -1,0 +1,48 @@
+{
+    "title": "Three-way Tips",
+    "id":"three-way",
+    "today":[
+        {
+            "teams": {
+                "home": "Home Match",
+                "away": "Away Match"
+            },
+            "tip": "Home win",
+            "status": "pending",
+            "league": "League Type",
+            "startTime": "Start Time"
+        },
+        {
+            "teams": {
+                "home": "Home Match",
+                "away": "Away Match"
+            },
+            "tip": "Away & Over 1.5",
+            "status": "pending",
+            "league": "League Type",
+            "startTime": "Start Time"
+        }
+    ],
+    "previous":[
+        {
+            "teams": {
+                "home": "Home Match",
+                "away": "Away Match"
+            },
+            "tip": "Home win",
+            "status": "lost",
+            "league": "League Type",
+            "startTime": "Start Time"
+        },
+        {
+            "teams": {
+                "home": "Home Match",
+                "away": "Away Match"
+            },
+            "tip": "Away & Over 1.5",
+            "status": "won",
+            "league": "League Type",
+            "startTime": "Start Time"
+        }
+    ]
+}

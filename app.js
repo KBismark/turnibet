@@ -1,8 +1,20 @@
-import {configure, renderPage, getSiteStats } from 'xolus'
-import express, {Response, Request} from 'express';
-import {join} from 'path'
-import {createReadStream} from 'fs'
-import App from './dist/App'
+const {configure, renderPage, getSiteStats } = require('xolus')
+const express = require('express');
+const {join} = require('path')
+const {mkdirSync} = require('fs')
+const App = require('./dist/App').default;
+const { set_db_dirictory } = require('guther');
+const dataDirectory = join(__dirname, '/data');
+
+// create data directory if not exist
+try {
+    mkdirSync(dataDirectory)
+} catch (error) {
+    if(error.code!=='EEXIST'){
+        throw error
+    }
+}
+set_db_dirictory(join(__dirname, '/data'))
 
 // Configure Xolus Renderer
 configure({

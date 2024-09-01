@@ -2,43 +2,16 @@ import { createComponent } from "xolus";
 import TipSlice from "./TipSlice";
 import {getHeroDays} from '../../utils'
 import { useRef } from "../../types";
+import {get} from 'guther'
+
+const serverData = new Map();
 
 const HeroTips = createComponent({
     template({ storage, parentRef, props}){
         const componentRef = useRef(storage);
-        const datas = [
-            {
-                teams: {
-                    home: 'Man City',
-                    away: 'Chelsea'
-                },
-                tip: 'Home win',
-                status: 'pending',
-                league: 'Premier League',
-                startTime: '19 : 30 PM (GMT+0000)'
-            },
-            {
-                teams: {
-                    home: 'Real Madrid',
-                    away: 'Real Betis'
-                },
-                tip: 'Over 2.5',
-                status: 'live',
-                league: 'Laliga',
-                startTime: '19 : 30 PM (GMT+0000)'
-            }
-        ]
+        const data = serverData.get(`${storage}${componentRef}`);
+        serverData.delete(`${storage}${componentRef}`)
         
-        const data = {
-            monday: datas,
-            tuesday: datas,
-            wednesday: datas,
-            thursday: datas.map((e)=>{const a = {...e};a.league = 'Ghana Premier league'; return a}),
-            friday: datas,
-            saturday: datas,
-            sunday: datas
-        }
-
         const herodays = getHeroDays().reverse();
 
         return (
@@ -89,6 +62,17 @@ const HeroTips = createComponent({
         )
     },
     async templateData({ storage, parentRef, props, done}){
+        const ref = useRef(storage);
+        get({id: 'daily-tips'})
+        .then((data)=>{
+            serverData.set(`${storage}${ref}`, data);
+            done(ref)
+        })
+        .catch((err)=>{
+            serverData.set(`${storage}${ref}`, data);
+            done(ref)
+        });
+
         const datas = [];
         const data = {
             monday: datas,
@@ -105,7 +89,8 @@ const HeroTips = createComponent({
         const store = {
             currentTab: 'today'
         };
-        return <template-data done={true}>{store}</template-data>
+
+        return <template-data done={false}>{store}</template-data>
     }
 })
 

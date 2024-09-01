@@ -134,7 +134,7 @@ button.white-inactive{
 }
 #hero-login form input{
     width: 100%;
-    padding: 9px 15px;
+    padding: 11px 15px;
     background-color:rgba(43,43,43,0.3);
     outline:none;
     border:1px solid rgba(43,43,43,0.8);
