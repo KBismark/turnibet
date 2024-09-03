@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "xolus-cmp": ">=2.1.0"
+    "xolus-cmp": "^2.1.0"
   },
   "license": "MIT",
   "private": true

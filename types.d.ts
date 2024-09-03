@@ -30,4 +30,4 @@ declare function getComponentNode(ref: string): ReturnType<typeof document['getE
 const __$track_it: (...args: never[])=>never;
 const __$get_ref: (...args: never[])=>never;
 
-NAMES: type ActionsNames = 'onToday'|'onYesterday'|'onThird'|'onSecond'|'onFirst'|'onClick'|'onJoinVIP'|'onClickMe'; 
+NAMES: type ActionsNames = 'onClickMe'|'onToday'|'onYesterday'|'onThird'|'onSecond'|'onFirst'|'onClick'|'onJoinVIP'; 

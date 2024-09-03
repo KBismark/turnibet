@@ -89,4 +89,4 @@ setAction('onJoinVIP', function (_a) {
     console.log(getComponentNode(componentRef));
 });
 
-},{}]},{},[2,3,4,1]);
+},{}]},{},[1,2,3,4]);
