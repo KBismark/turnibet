@@ -58,9 +58,15 @@ router.post('/tips/:path',async (req, res, next)=>{
     }
     
    try {
-    data.holder = data.previous;
+    const holder = data.previous;
     data.previous = data.today;
     data.today = req.body;
+    if(id==='free-tips'){
+        data.previous.title = holder.title;
+        data.previous.id = holder.id;
+    }else{
+        data.holder = holder;
+    }
     await update({id, data})
    } catch (error) {
     return next()
@@ -80,3 +86,4 @@ router.get('/tips/:path',async (req, res, next)=>{
    res.status(200).json(data.today)
 })
 
+module.exports = {dataRouter: router}

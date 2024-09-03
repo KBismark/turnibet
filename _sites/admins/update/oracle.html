@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin: Site endpoints</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 10px;
+            margin: 0;
+        }
+        button{
+            background-color: #13934f;
+            color: #ebebeb;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px 25px;
+            border-radius: 90px;
+            outline: none;
+            border: none; 
+            cursor: pointer;
+            font-size: 17px;
+            max-width: 320px;
+            width: 98%;
+        }
+        button:hover{
+            background-color: #09bb5d;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            margin: 15px 10px;
+        }
+        input{
+            width: 100%;
+            padding: 11px 15px;
+            background-color:#ebebeb;
+            outline:none;
+            border:1px solid rgba(209, 209, 209, 0.836);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size:17px;
+            font-weight:500;
+            color:#5a5a5a;
+            text-align: center;
+        }
+        .tip-line{
+            border-top: 4px solid #13934f;
+            margin-bottom: 15px;
+            background-color: rgba(235, 235, 235, 0.2);
+            padding: 15px 10px 0px 10px;
+        }
+        .tip input{
+            width: calc(50% - 35px);
+        }
+        .tip input.tip-input{
+            width: 30%;
+        }
+        .league input{
+            width: calc(50% - 35px);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Divine Oracle Tips</h1>
+
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <div class="tip-line">
+        <div class="tip">
+            <input type="text" placeholder="Home team" />
+            <input type="text" placeholder="Away team" />
+            <div style="display: flex;justify-content: center;">
+                <input class="tip-input" type="text" placeholder="Tips" />
+            </div>
+        </div>
+        <div class="league">
+            <input type="text" placeholder="League" />
+            <input type="text" placeholder="Start time" />
+        </div>
+    </div> 
+    <button id="submit">Update tips</button>
+    <script>
+        const tips = Object.values(document.getElementsByClassName('tip-line'));
+        document.getElementById('submit').addEventListener('click',async function (e){
+            let passed = true;
+            const tipsdata = []
+            tips.forEach((element)=>{
+                if(!passed) return;
+                const inputs = Object.values(element.getElementsByTagName('input'));
+                inputs.forEach((input, index)=>{
+                    if(input.value.trim().length<1){
+                        passed = false;
+                        return;
+                    }
+                })
+                if(!passed) return;
+                const data =  {
+                    "teams": {
+                        "home": inputs[0].value.trim(),
+                        "away": inputs[1].value.trim()
+                    },
+                    "tip": inputs[2].value.trim(),
+                    "status": "pending",
+                    "league": inputs[3].value.trim(),
+                    "startTime": inputs[4].value.trim()
+                };
+                tipsdata.push(data);
+            });
+            if(!passed){
+                alert('Some fields are empty');
+                return;
+            }
+            try {
+                const response = await (await fetch('/data/tips/oracle',{
+                    method: 'post',
+                    headers: {
+                        'content-type':'application/json'
+                    },
+                    body: JSON.stringify(tipsdata)
+                })).json();
+                if(response.errored){
+                    return alert("Couldn't update tips. An error occured.");
+                }
+                alert("Successfully updated tips!");
+            } catch (error) {
+                alert('Internet connection problem. Connect to internet and try again.')
+            }
+        }, false)
+    </script>
+</body>
+</html>

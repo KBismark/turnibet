@@ -1,4 +1,4 @@
-import { app } from "./app";
+const { app } = require('./app');
 
 app.listen(6097, ()=>{
     console.log('Server running at port '+ 6097);

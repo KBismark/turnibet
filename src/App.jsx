@@ -9,8 +9,6 @@ import Footer from "./components/Footer";
 
 const App = createComponent({
     template({ storage, parentRef, props, init}){
-        let ref = useRef(storage);
-        const {username} = props;
         return (
             <template>
                 <html lang="en" >
@@ -72,7 +70,6 @@ const App = createComponent({
         )
     },
     async templateData({ storage, parentRef, props, done}){
-        const {username} = props;
         return <template-data done></template-data>
     }
 })

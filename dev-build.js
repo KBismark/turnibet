@@ -5,6 +5,7 @@ const {app} = require('./app')
 startDevServer({
     root: __dirname,
     currentFile: __filename,
-    server: http.createServer(app)
+    server: http.createServer(app),
+    compileOnly: true
 })
 
