@@ -33,7 +33,7 @@ const Tips = createComponent({
             <template>
                 <article>
                     <div className="bg-heading" style="flex-directio:column;align-items: center;">
-                        <h2 className="page-color" style="text-align:center;text-transform:uppercase;"><>{data.title}</></h2>
+                        <h2 className="page-color" style="text-align:center;text-transform:uppercase;margin:10px;"><>{data.title}</></h2>
                         <div className="flex-cn">
                             <div className="white-inactive j-bt on">
                                 <div className="page-white-color" style="margin-right: 20px">Today's tips</div>
@@ -44,8 +44,8 @@ const Tips = createComponent({
                                 <button className="white-bg" onClick="onClick" >Today</button>
                             </div>
                         </div>
-                        <div style="text-align:center;font-size:14px;margin: 5px 0px;" className="page-white-color on"><>{data.date?data.date.today:todaysDate}</></div>
-                        <div style="text-align:center;font-size:14px;margin: 5px 0px;display:none;" className="page-white-color off"><>{data.date?data.date.previous:todaysDate}</></div>
+                        <div style="text-align:center;font-size:12px;margin: 5px 0px;" className="page-white-color on"><>{data.date?data.date.today:todaysDate}</></div>
+                        <div style="text-align:center;font-size:12px;margin: 5px 0px;display:none;" className="page-white-color off"><>{data.date?data.date.previous:todaysDate}</></div>
                     </div>
                     <div className="tipspace">
                         <div className="tips on">

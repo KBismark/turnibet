@@ -99,6 +99,18 @@ router.get('/tips/:path',async (req, res, next)=>{
         return next()
     }
    res.status(200).json(data.today)
+});
+
+router.get('/download/:path',async (req, res)=>{
+    const id = `${req.params.path}`.toLowerCase();
+    let data = null
+    try {
+        data = await get({id})
+    } catch (error) {
+        return res.status(404).end()
+    }
+    res.download(join(__dirname,`../data/${id}.json`),`${id}.json`);
+//    res.status(200).json(data.today)
 })
 
 module.exports = {dataRouter: router}

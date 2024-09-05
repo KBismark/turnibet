@@ -200,7 +200,7 @@ button.white-inactive{
         display:none;
     }
 }
-@media screen and (max-width: 450px){
+@media screen and (max-width: 460px){
     button.white-inactive{
         background-color: rgba(43,43,43,0.5);
     }

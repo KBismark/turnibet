@@ -44,7 +44,7 @@ const css = `
     padding: 3px 3px 3px 30px;
 }
 #after-hero-side-tip .tipspace{
-    padding: 20px 10px;
+    padding: 10px 10px 15px;
     background: #ebebeb;
 }
 #after-hero-side-tip .tip-container{

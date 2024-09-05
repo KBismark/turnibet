@@ -69,7 +69,7 @@ export const TipStyles = `
 }
 .tips .tip-head{
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 .tip{
     display:flex;
@@ -109,5 +109,10 @@ export const TipStyles = `
 }
 .tip-point .point.time{
     background: rgb(9, 4, 90);
+}
+@media screen and (max-width: 460px){
+    .tip{
+        font-size: 13px;
+    }
 }
 `.replace(/\n/gs,'').replace(/\s\s/gs,' ').replace(/\s\s/gs,' ')

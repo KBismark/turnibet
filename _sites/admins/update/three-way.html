@@ -150,10 +150,11 @@
     <script>
         const tips = Object.values(document.getElementsByClassName('tip-line'));
         document.getElementById('submit').addEventListener('click',async function (e){
-            let passed = true;
+            // let passed = true;
             const tipsdata = []
             tips.forEach((element)=>{
-                if(!passed) return;
+                // if(!passed) return;
+                let passed = true;
                 const inputs = Object.values(element.getElementsByTagName('input'));
                 inputs.forEach((input, index)=>{
                     if(input.value.trim().length<1){
@@ -174,7 +175,7 @@
                 };
                 tipsdata.push(data);
             });
-            if(!passed){
+            if(tipsdata.length<1){
                 alert('Some fields are empty');
                 return;
             }
