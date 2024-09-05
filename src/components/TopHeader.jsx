@@ -6,7 +6,7 @@ const Header = createComponent({
             <template>
                 <header>
                     <div class="brand-logo">
-                        <a href="/" class="head-font nonlinkable">turniBets</a>
+                        <a href="/" style="text-decoration: none;" class="head-font nonlinkable">InvisibleTipster</a>
                     </div>
                     <nav style="" className="horizontal over-tablet-screen">
                         <ul>

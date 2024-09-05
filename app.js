@@ -27,18 +27,18 @@ const app = express();
 
 app.use(express.json())
 
-// app.get('/', async (req, res)=>{
-//     res.setHeader('content-type','text/html');
-//     let html = '<H1>Error Page: Error Occured!</H1>'
-//     try {
-//         html = await renderPage(App, {username: ''});
-//         saveToSites('/', html)
-//     }catch (error) {
-//         throw error
-//     };
-//     res.status(200)
-//     .send(html);
-// });
+app.get('/', async (req, res)=>{
+    res.setHeader('content-type','text/html');
+    let html = '<H1>Error Page: Error Occured!</H1>'
+    try {
+        html = await renderPage(App, {username: ''});
+        saveToSites('/', html)
+    }catch (error) {
+        throw error
+    };
+    res.status(200)
+    .send(html);
+});
 
 app.get('/admins/update-the-site',async (req, res)=>{
     res.setHeader('content-type','text/html');
@@ -46,7 +46,7 @@ app.get('/admins/update-the-site',async (req, res)=>{
     try {
         html = await renderPage(App, {username: ''});
         saveToSites('/', html);
-        html = '<H1>Page sSccessfully Updated!</H1>'
+        html = '<H1>Page Successfully Updated!</H1>'
     }catch (error) {
         html = '<H1>Oops! An Error Occured.</H1>';
     };

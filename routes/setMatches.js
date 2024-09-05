@@ -49,6 +49,7 @@ router.post('/tips/:path',async (req, res, next)=>{
     if(!req.body){
         return next()
     }
+    let isResultUpdate = req.query&&req.query.type;
     const id = `${req.params.path}`.toLowerCase();
     let data = null
     try {
@@ -56,21 +57,30 @@ router.post('/tips/:path',async (req, res, next)=>{
     } catch (error) {
         return next()
     }
-    
-   try {
-    const holder = data.previous;
-    data.previous = data.today;
-    data.today = req.body;
-    if(id==='free-tips'){
-        data.previous.title = holder.title;
-        data.previous.id = holder.id;
+    if(isResultUpdate){
+        data.today = req.body;
+        try {
+            await update({id, data});
+        } catch (error) {
+            return next()
+        }
     }else{
-        data.holder = holder;
+        try {
+            const holder = data.previous;
+            data.previous = data.today;
+            data.today = req.body;
+            if(id==='free-tips'){
+                data.previous.title = holder.title;
+                data.previous.id = holder.id;
+            }else{
+                data.holder = holder;
+            }
+            await update({id, data})
+        } catch (error) {
+            return next()
+        }
     }
-    await update({id, data})
-   } catch (error) {
-    return next()
-   }
+  
    res.status(201).json({errored: false})
 })
 

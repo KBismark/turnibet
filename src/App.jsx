@@ -13,7 +13,7 @@ const App = createComponent({
             <template>
                 <html lang="en" >
                     <Slot>{Head}</Slot>
-                    <body>
+                    <body style="margin:0px;">
                         <script><>{init()}</></script>
                         <script src="/assets/statestore.js"></script>
                         <script src="/assets/xolus.js"></script>
@@ -176,7 +176,7 @@ button.white-inactive{
     border-radius: 3px 0px 0px 3px;
     background-color:#13934f05;
 }
-@media screen and (max-width: 1010px){
+@media screen and (max-width: 1090px){
     #hero-login,#hero-login.d-block,#hero-login.d-block.over-tablet-screen,.hero-login{
         display:none;
     }

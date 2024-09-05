@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin: Site endpoints</title>
+    <style>
+         body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 10px;
+            margin: 0;
+        }
+        button{
+            background-color: #13934f;
+            color: #ebebeb;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px 25px;
+            border-radius: 90px;
+            outline: none;
+            border: none; 
+            cursor: pointer;
+            font-size: 17px;
+            max-width: 320px;
+            width: 98%;
+        }
+        button:hover{
+            background-color: #09bb5d;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            margin: 15px 10px;
+        }
+        input, .league select{
+            width: 100%;
+            padding: 11px 15px;
+            background-color:#ebebeb;
+            outline:none;
+            border:1px solid rgba(209, 209, 209, 0.836);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size:17px;
+            font-weight:500;
+            color:#5a5a5a;
+            text-align: center;
+        }
+        input{
+            background-color:rgba(235, 235, 235, 0.24);
+            border:1px solid rgba(235, 235, 235, 0.24);
+        }
+        .tip-line{
+            border-top: 4px solid #13934f;
+            margin-bottom: 15px;
+            background-color: rgba(235, 235, 235, 0.2);
+            padding: 15px 10px 0px 10px;
+        }
+        .tip input{
+            width: calc(50% - 35px);
+        }
+        .tip input.tip-input{
+            width: 30%;
+        }
+        .league input{
+            width: calc(50% - 35px);
+        }
+        .league select{
+            width: calc(50% - 2px);
+        }
+        select option{
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Today's Free Tips Results</h1>
+    <script>
+        (async function(params) {
+            let actualResponseData = {}
+            let responseData = [];
+            try {
+                actualResponseData = await (await fetch('/data/tips/free-tips')).json();
+                if(actualResponseData.errored){
+                    return alert("Couldn't retrieve data. An error occured. Reload the page.");
+                }
+                responseData = actualResponseData.tips;
+            } catch (error) {
+                return alert('Internet connection problem. Connect to internet and reload the page.')
+            }
+            const fragment = document.createDocumentFragment();
+            responseData.forEach((data)=>{
+                fragment.appendChild(createTipLine(data))
+            });
+            if(responseData.length>0){
+                const button = document.createElement('button');
+                button.setAttribute('id', 'submit');
+                button.textContent = 'Update results';
+                document.body.append(fragment, button);
+            }else{
+                return alert('Something is not right. Please reload page.')
+            }
+            document.getElementById('submit').addEventListener('click',async function(e){
+                try {
+                    const response = await (await fetch('/data/tips/free-tips?type=result',{
+                        method: 'post',
+                        headers: {
+                            'content-type':'application/json'
+                        },
+                        body: JSON.stringify(actualResponseData)
+                    })).json();
+                    if(response.errored){
+                        return alert("Couldn't update results. An error occured.");
+                    }
+                    alert("Successfully updated results!");
+                } catch (error) {
+                    alert('Internet connection problem. Connect to internet and try again.')
+                }
+            }, false)
+        })();
+
+        function createTipLine(data){
+            const template = document.createElement('div');
+            template.setAttribute('class','tip-line');
+            template.innerHTML = `
+                <div class="tip">
+                    <input disabled type="text" value=${JSON.stringify(data.teams.home)} placeholder="Home team" />
+                    <input disabled type="text" value=${JSON.stringify(data.teams.away)} placeholder="Away team" />
+                </div>
+                <div class="league">
+                    <input disabled type="text" value=${JSON.stringify(data.league)} placeholder="League" />
+                    <input disabled type="text" value=${JSON.stringify(data.startTime)} placeholder="Start time" />
+                </div>
+                <div class="league">
+                    <input disabled type="text" value=${JSON.stringify(data.tip)} placeholder=Tips" />
+                     <select name="status" class="status">
+                        <option ${data.status==='pending'?'selected':''} value="pending">Set results status</option>
+                        <option value="pending">Not started or Results unavailable</option>
+                        <option ${data.status==='lost'?'selected':''} value="lost">Lost</option>
+                        <option ${data.status==='won'?'selected':''} value="won">Won</option>
+                        <option ${data.status==='live'?'selected':''} value="live">In-Play or Live</option>
+                    </select>
+                </div>
+            `;
+            template.getElementsByTagName('select')[0].addEventListener('change',function(e){
+                data.status=this.value;
+            }, false);
+            return template;
+        }
+    </script>
+</body>
+</html>
