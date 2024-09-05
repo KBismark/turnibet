@@ -1,6 +1,6 @@
 const express = require('express');
 const {join} = require('path');
-const { getHeroDays } = require('../utils');
+const { getHeroDays, getTodaysDate } = require('../utils');
 const { insert, get, update, set_db_dirictory } = require('guther');
 
 // set_db_dirictory(join(__dirname, '../data'))
@@ -72,8 +72,13 @@ router.post('/tips/:path',async (req, res, next)=>{
             if(id==='free-tips'){
                 data.previous.title = holder.title;
                 data.previous.id = holder.id;
+                data.previous.date = holder.date;
+                data.today.date = getTodaysDate();
             }else{
                 data.holder = holder;
+                data.date = data.date||{};
+                data.date.previous = data.date.today;
+                data.date.today = getTodaysDate();
             }
             await update({id, data})
         } catch (error) {

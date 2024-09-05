@@ -1,6 +1,7 @@
 import { createComponent } from "xolus";
 import TipSlice from "./TipSlice";
 import {get} from 'guther'
+import { getTodaysDate } from "../../utils";
 
 const serverData = new Map();
 const arr = []
@@ -25,7 +26,8 @@ const Tips = createComponent({
     template({ storage, parentRef, props}){
         const componentRef = useRef(storage);
         const data = serverData.get(`${storage}${componentRef}`);
-        serverData.delete(`${storage}${componentRef}`)
+        serverData.delete(`${storage}${componentRef}`);
+        const todaysDate = getTodaysDate();
 
         return (
             <template>
@@ -42,6 +44,8 @@ const Tips = createComponent({
                                 <button className="white-bg" onClick="onClick" >Today</button>
                             </div>
                         </div>
+                        <div style="text-align:center;font-size:14px;margin: 5px 0px;" className="page-white-color on"><>{data.date?data.date.today:todaysDate}</></div>
+                        <div style="text-align:center;font-size:14px;margin: 5px 0px;display:none;" className="page-white-color off"><>{data.date?data.date.previous:todaysDate}</></div>
                     </div>
                     <div className="tipspace">
                         <div className="tips on">
@@ -72,6 +76,7 @@ const Tips = createComponent({
                             </div>
                             <Map data={data.previous}>{TipSlice}</Map>
                         </div>
+                        <div className="tip-alert">Gambling can be addictive. Bet responsibly. Adults only!</div>
                     </div>
                 </article>
             </template>

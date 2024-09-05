@@ -53,6 +53,16 @@ const css = `
 #after-hero-side-tip .tip{
     border-top: 1px solid #d3d3d3;
 }
+#after-hero-side-tip .tip-alert{
+    margin: 20px 10px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color:rgba(147, 55, 19, 0.144);
+    color: rgb(147, 55, 19);
+    font-weight:500;
+    font-size:15px;
+    text-align:center;
+}
 @media screen and (max-width: 860px){
     #after-hero-side-tip{
         min-width: auto;
