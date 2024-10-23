@@ -15,9 +15,9 @@ const App = createComponent({
                     <Slot>{Head}</Slot>
                     <body style="margin:0px;">
                         <script><>{init()}</></script>
-                        <script src="/assets/statestore.js"></script>
-                        <script src="/assets/xolus.js"></script>
-                        <script src="/assets/actions.bundle.js"></script>
+                        <script src="/sportstips/assets/statestore.js"></script>
+                        <script src="/sportstips/assets/xolus.js"></script>
+                        <script src="/sportstips/assets/actions.bundle.js"></script>
                         <style><>{css}</></style>
                         <style><>{TipStyles}</></style>
                         <Slot>{Header}</Slot>
@@ -40,7 +40,7 @@ const App = createComponent({
                                                 <h2>
                                                     VIP is free until you win. Log in now.
                                                 </h2>
-                                                <form style="width:100%" action="/viplogin" method="post">
+                                                <form style="width:100%" action="/sportstips/viplogin" method="post">
                                                     <input required name="email" type="email" placeholder="eg. example@email.com" />
                                                     <input required minLength="8" min="8" name="password" type="password" placeholder="password" />
                                                     <button type="submit" onClick="onJoinVIP" >Log in as VIP member</button>
