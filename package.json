@@ -13,11 +13,12 @@
     "express": "^4.19.2",
     "guther": "^1.0.1",
     "statestorejs": "^1.2.0",
-    "xolus": "^2.0.0"
+    "xolus": "^2.0.0",
+    "xolus-cmp": "^2.1.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
-    "xolus-cmp": "^2.1.0"
+    "@types/express": "^4.17.21"
+    
   },
   "license": "MIT",
   "private": true
