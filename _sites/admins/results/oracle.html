@@ -81,7 +81,7 @@
         (async function(params) {
             let responseData = [];
             try {
-                responseData = await (await fetch('/data/tips/oracle')).json();
+                responseData = await (await fetch('/sportstips/data/tips/oracle')).json();
                 if(responseData.errored){
                     return alert("Couldn't retrieve data. An error occured. Reload the page.");
                 }
@@ -102,7 +102,7 @@
             }
             document.getElementById('submit').addEventListener('click',async function(e){
                 try {
-                    const response = await (await fetch('/data/tips/oracle?type=result',{
+                    const response = await (await fetch('/sportstips/data/tips/oracle?type=result',{
                         method: 'post',
                         headers: {
                             'content-type':'application/json'

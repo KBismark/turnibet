@@ -1,7 +1,10 @@
 const { app } = require('./app');
+app.use('/sportstips', app);
+console.log(app);
 
-app.listen(6097, ()=>{
-    console.log('Server running at port '+ 6097);
-    console.log('See http://localhost:'+ 6097);
-})
+const PORT = process.env.PORT;
+// app.listen(()=>{
+//     console.log('Server running at port '+ PORT);
+//     console.log('See http://localhost:'+ PORT);
+// })
 

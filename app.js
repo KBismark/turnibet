@@ -23,7 +23,7 @@ configure({
 })
 
 // App exported 
-const app = express();
+const app = express.Router();
 
 app.use(express.json())
 
