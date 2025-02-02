@@ -1,5 +1,5 @@
 # Soccer betting tips site
-This a soccer betting tips site built to text a framework I (created, [Xolus](https://github.com/KBismark/xolus).    
+This a soccer betting tips site built to test a framework I created, [Xolus](https://github.com/KBismark/xolus).    
 
 ## How to run application
 - Clone this repo and `cd turnibet`
