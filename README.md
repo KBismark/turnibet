@@ -9,3 +9,10 @@ This a soccer betting tips site built to test a framework I created, [Xolus](htt
 - Now visit [http://localhost:6097](http://localhost:6097)
 
 - Make changes to the codes and Happy coding! Thanks for trying out my framework.    
+
+
+## Preview
+
+![A Soccer betting tips site created with Xolus](https://raw.githubusercontent.com/KBismark/turnibet/refs/heads/master/assets/images/invisible-tipster.png)    
+
+
